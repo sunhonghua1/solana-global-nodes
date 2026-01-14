@@ -80,6 +80,27 @@ python3 scripts/global_monitor.py
 - Multi-node asset tracking (SOL + Custom SPL Tokens)
 - Visual status indicators for node health
 
+**📡 Live Infrastructure Monitor:**
+
+Below is the real-time output from my custom Python cluster monitoring script (`scripts/global_monitor.py`), verified on 2026-01-14 20:16 UTC.
+
+```text
+============================================================
+ 🌍 GLOBAL SOLANA INFRASTRUCTURE MONITOR
+ 🕒 Updated: 2026-01-14 20:16:20 UTC
+ 🔑 Token Mint: 6F4sJG...EAFx
+============================================================
+NODE LOCATION             | SOL BALANCE     | TOKEN BALANCE  
+------------------------------------------------------------
+✅ 🇩🇪 Leipzig (Master)    | 0.59032128 SOL  | 881112         
+✅ 🇺🇸 Los Angeles (Edge)  | 0.1 SOL         | 88888          
+✅ 🇭🇰 Hong Kong (Bot)     | 0.2 SOL         | 10000          
+✅ 🇯🇵 Osaka (RPC)         | 0.1 SOL         | 20000          
+============================================================
+```
+
+> **Status:** All nodes active, funded with Gas, and synchronized.
+
 ---
 
 ### 3. Quantitative Trading Bot

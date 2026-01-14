@@ -11,8 +11,8 @@ TOKEN_MINT = "6F4sJGKuYtzaZ5ENC2DAxnbg4ZhRCwZHuP9QRe4REAFx"
 NODES = {
     "🇩🇪 Leipzig (Master)": "AsrvXt3sRmGdqi1ZbxaTX6Q3VqVkVhApvf6WVVe6G9DM",
     "🇺🇸 Los Angeles (Edge)": "F5rqhcShdiQxr6ZgJSEmqzQBvaEFm6zSVwVdFA6y69RW",
-    "🇭🇰 Hong Kong (Bot)": "Pending_Setup_HongKong",  # 后续填入真实地址
-    "🇯🇵 Osaka (RPC)": "Pending_Setup_Osaka"          # 后续填入真实地址
+    "🇭🇰 Hong Kong (Bot)": "6TqxxtoE4MxYtLbmsXtt7tXr5QCEXCeoPbkoM7JKrrNi",
+    "🇯🇵 Osaka (RPC)": "4Qaaemy1m9LvC7H5nqys7s7Cry91KzGRQFyhApWtUigP"
 }
 # ----------------
 

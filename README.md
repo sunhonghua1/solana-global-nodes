@@ -66,6 +66,20 @@
 
 **Verified TX:** [View on Explorer](https://explorer.solana.com/tx/3GFstAQnhKCSzUyLcQEg6GGcsyt9xUPT6bwPsWHu2fWHfSPQxSgQBLYuaLQumTqMTaycFuFRLuqb28LkpUfxfMB)
 
+**📡 Automated Cluster Monitor:**
+
+Included in this repository is a custom Python script (`scripts/global_monitor.py`) used to audit asset synchronization across my global nodes.
+
+```bash
+python3 scripts/global_monitor.py
+```
+
+**Features:**
+- Real-time RPC calls to Solana Devnet
+- Sub-process management for CLI tools
+- Multi-node asset tracking (SOL + Custom SPL Tokens)
+- Visual status indicators for node health
+
 ---
 
 ### 3. Quantitative Trading Bot

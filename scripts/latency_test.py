@@ -26,21 +26,50 @@ ENDPOINTS = {
 TEST_COUNT = 5
 
 # 节点位置 (自动检测或手动设置)
+# 可通过环境变量 NODE_NAME 手动覆盖: export NODE_NAME="🇯🇵 Osaka"
 NODE_LOCATIONS = {
+    # hostname 匹配
     "srv28836": "🇩🇪 Leipzig",
-    "ip-10-0-0-97": "🇺🇸 Los Angeles", 
     "VM-HKG": "🇭🇰 Hong Kong",
-    "osaka": "🇯🇵 Osaka",
+}
+
+# 公网 IP 匹配 (用于 AWS 等动态主机名的服务器)
+NODE_IPS = {
+    "56.155.17.251": "🇯🇵 Osaka",
+    "205.198.66.34": "🇭🇰 Hong Kong",
 }
 # ----------------
 
+def get_public_ip():
+    """获取服务器公网 IP"""
+    import urllib.request
+    try:
+        return urllib.request.urlopen('https://api.ipify.org', timeout=5).read().decode('utf8')
+    except:
+        return None
+
 def get_node_name():
     """获取当前节点名称"""
+    import os
+    
+    # 1. 先检查环境变量覆盖
+    env_name = os.environ.get('NODE_NAME')
+    if env_name:
+        return env_name
+    
+    # 2. 检查主机名匹配
     hostname = socket.gethostname().lower()
     for key, name in NODE_LOCATIONS.items():
         if key.lower() in hostname:
             return name
-    return f"🖥️ {hostname}"
+    
+    # 3. 检查公网 IP 匹配
+    public_ip = get_public_ip()
+    if public_ip and public_ip in NODE_IPS:
+        return NODE_IPS[public_ip]
+    
+    # 4. 默认返回主机名
+    return f"🖥️ {socket.gethostname()}"
 
 def test_tcp_latency(host, port, count=5):
     """

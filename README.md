@@ -101,6 +101,19 @@ NODE LOCATION             | SOL BALANCE     | TOKEN BALANCE
 
 > **Status:** All nodes active, funded with Gas, and synchronized.
 
+**🌐 Global Exchange Latency Heatmap:**
+
+Measured using `scripts/latency_test.py` on 2026-01-14. Lower is better.
+
+| Node | Binance Spot | OKX API | Solana RPC | Best For |
+|------|--------------|---------|------------|----------|
+| 🇭🇰 Hong Kong | **1.6ms** 🏆 | 1.7ms | 55ms | Trading |
+| 🇺🇸 Los Angeles | 1.7ms | **1.6ms** 🏆 | **1.4ms** 🏆 | Solana Ops |
+| 🇩🇪 Leipzig | 17.7ms | 18.1ms | 17.8ms | Stable Backup |
+| 🇯🇵 Osaka | 9.3ms | 3.7ms | 34.5ms | APAC RPC |
+
+> **Recommendation:** Route high-frequency trades through Hong Kong; use Los Angeles for Solana on-chain operations.
+
 ---
 
 ### 3. Quantitative Trading Bot

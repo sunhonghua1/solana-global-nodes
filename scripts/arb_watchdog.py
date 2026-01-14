@@ -31,12 +31,14 @@ TELEGRAM_CHAT_ID = ""             # 你的 Chat ID
 
 # API 端点
 BINANCE_API = "https://api.binance.com/api/v3/ticker/price?symbol=SOLUSDT"
-JUPITER_API = "https://price.jup.ag/v6/price?ids=SOL"  # Jupiter 聚合器 (更可靠)
+# 备用价格源 (选择一个可用的)
+COINGECKO_API = "https://api.coingecko.com/api/v3/simple/price?ids=solana&vs_currencies=usd"
+BINANCE_FUTURES_API = "https://fapi.binance.com/fapi/v1/ticker/price?symbol=SOLUSDT"
 # ================================================
 
 def get_binance_price() -> Optional[float]:
     """
-    从 Binance 获取 SOL/USDT 价格 (CEX)
+    从 Binance 现货获取 SOL/USDT 价格 (CEX)
     最佳运行位置: 🇭🇰 香港 (1.6ms)
     """
     try:
@@ -45,21 +47,31 @@ def get_binance_price() -> Optional[float]:
             data = json.loads(response.read().decode())
             return float(data['price'])
     except Exception as e:
-        print(f"⚠️ Binance API Error: {e}")
+        print(f"⚠️ Binance Spot API Error: {e}")
         return None
 
 def get_dex_price() -> Optional[float]:
     """
-    从 Solana DEX (Jupiter 聚合器) 获取 SOL 价格
-    最佳运行位置: 🇺🇸 洛杉矶 (1.4ms)
+    从备用源获取 SOL 价格 (用于对比)
+    尝试顺序: CoinGecko -> Binance Futures
     """
+    # 尝试 CoinGecko
     try:
-        req = urllib.request.Request(JUPITER_API, headers={'User-Agent': 'ArbWatchdog/1.0'})
+        req = urllib.request.Request(COINGECKO_API, headers={'User-Agent': 'ArbWatchdog/1.0'})
         with urllib.request.urlopen(req, timeout=5) as response:
             data = json.loads(response.read().decode())
-            return float(data['data']['SOL']['price'])
+            return float(data['solana']['usd'])
     except Exception as e:
-        print(f"⚠️ DEX API Error: {e}")
+        pass
+    
+    # 备用: Binance Futures (可以对比现货 vs 合约价差)
+    try:
+        req = urllib.request.Request(BINANCE_FUTURES_API, headers={'User-Agent': 'ArbWatchdog/1.0'})
+        with urllib.request.urlopen(req, timeout=5) as response:
+            data = json.loads(response.read().decode())
+            return float(data['price'])
+    except Exception as e:
+        print(f"⚠️ Price API Error: {e}")
         return None
 
 def calculate_spread(cex_price: float, dex_price: float) -> Tuple[float, str]:

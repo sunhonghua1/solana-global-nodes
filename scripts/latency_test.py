@@ -36,6 +36,7 @@ NODE_LOCATIONS = {
 # 公网 IP 匹配 (用于 AWS 等动态主机名的服务器)
 NODE_IPS = {
     "104.28.206.119": "🇺🇸 Los Angeles",
+    "74.48.178.153": "🇺🇸 Los Angeles",    # racknerd-bc7392
     "56.155.17.251": "🇯🇵 Osaka",
     "205.198.66.34": "🇭🇰 Hong Kong",
 }

@@ -173,6 +173,35 @@ Measured using `scripts/latency_test.py` on 2026-01-14. Lower is better.
 
 ---
 
+## 🤖 Live Application: CEX/DEX Arbitrage Watchdog
+
+Running on the **Leipzig Master Node**, this Python service aggregates real-time price feeds from:
+1. **Binance Spot** (via Hong Kong Node - 1.6ms latency)
+2. **DEX Aggregators** (via Los Angeles Node - 1.4ms latency)
+
+**Live Log Sample (2026-01-14):**
+```text
+======================================================================
+ 🐕 ARB WATCHDOG - CEX/DEX Price Monitor
+ ⏱️ Interval: 0.5s | 🚨 Alert Threshold: 1.0%
+======================================================================
+TIME         | BINANCE      | DEX          | SPREAD     | STATUS
+----------------------------------------------------------------------
+20:49:22     | $144.6200    | $144.5200    | -0.069%    | ✅ NORMAL
+20:49:23     | $144.6100    | $144.5400    | -0.048%    | ✅ NORMAL
+20:49:24     | $144.6100    | $144.5200    | -0.062%    | ✅ NORMAL
+======================================================================
+```
+
+> **Current Status:** System monitors spreads with <0.1% latency, ready to trigger execution logic when profitable opportunities arise.
+
+**Run it yourself:**
+```bash
+python3 scripts/arb_watchdog.py
+```
+
+---
+
 ## 📬 Contact
 
 - **Email:** howardsun199@gmail.com

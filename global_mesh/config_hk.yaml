@@ -1,0 +1,15 @@
+# 香港节点配置 (Publisher)
+redis:
+  host: "74.48.178.153"
+  port: 6379
+  password: "YourSuperSecretGlobalPassword2026!"
+  db: 0
+  socket_timeout: 5
+
+channels:
+  alerts: "global_alerts"
+  heartbeat: "node_heartbeat"
+
+node:
+  location: "HK"
+  debug: true

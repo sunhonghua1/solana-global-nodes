@@ -116,6 +116,55 @@ Measured using `scripts/latency_test.py` on 2026-01-14. Lower is better.
 
 ---
 
+### 🌐 Global Redis Mesh Network (NEW!)
+> Real-time Solana token sniper with sub-200ms global synchronization
+
+**Architecture:**
+```
+         🇭🇰 Hong Kong          🇯🇵 Osaka          🇩🇪 Leipzig
+         (Publisher)           (Publisher)        (Publisher)
+              \                    |                  /
+               \                   |                 /
+                \   [Redis Pub/Sub - Real-time]     /
+                 \                 |               /
+                  \                ▼              /
+                   =========> 🇺🇸 Los Angeles <========
+                              (Redis Master)
+                              (Sniper + Telegram)
+```
+
+**Components:**
+| Node | IP | Role | Status |
+|------|-----|------|--------|
+| 🇺🇸 Los Angeles | 74.48.178.153 | Redis Master + Receiver | ✅ Live |
+| 🇩🇪 Leipzig | 104.28.239.220 | Monitor + Publisher | ✅ Live |
+| 🇯🇵 Osaka | 104.28.206.119 | Monitor + Publisher | ✅ Live |
+| 🇭🇰 Hong Kong | 205.198.66.34 | Monitor + Publisher | ✅ Live |
+
+**Capabilities:**
+- 🔍 **Real-time Monitoring:** Pump.fun & Raydium new token detection
+- 📡 **Global Broadcast:** Sub-200ms signal propagation
+- 🎯 **Auto Sniper:** Jupiter API integration for instant swaps
+- 📱 **Telegram Alerts:** Instant mobile notifications
+- 🔐 **Security:** Redis password + IP whitelist firewall
+
+**Live Signal Flow:**
+```text
+[DE] 13:37:50 → Detected: NEW token on Raydium → Broadcast
+[LA] 13:37:50 → Received from DE → Telegram sent → Snipe check
+[LA] 13:37:50 → Liquidity $0 < $1000 threshold → Skipped
+```
+
+**Run the Network:**
+```bash
+# Master (Los Angeles)
+python3 global_receiver.py
+
+# Edge Nodes (Leipzig/Osaka/Hong Kong)
+export NODE_LOCATION=DE  # or JP/HK
+python3 global_monitor.py
+```
+
 ### 3. Quantitative Trading Bot
 > Automated cryptocurrency trading with ExtraSensors™ signal system
 

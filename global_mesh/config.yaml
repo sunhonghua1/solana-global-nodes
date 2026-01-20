@@ -1,0 +1,23 @@
+# Global Redis Mesh Configuration
+# Master Node: Los Angeles (74.48.178.153)
+
+redis:
+  host: "74.48.178.153"  # LA Master Node
+  port: 6379
+  password: "YourSuperSecretGlobalPassword2026!"
+  db: 0
+  socket_timeout: 5
+
+channels:
+  alerts: "global_alerts"
+  heartbeat: "node_heartbeat"
+
+# Node IPs Reference:
+# - Hong Kong:   205.198.66.34
+# - Osaka:       56.155.17.251
+# - Los Angeles: 74.48.178.153 (MASTER)
+# - Leipzig:     2a02:180:6:1::2a5 (IPv6) / WARP: 104.28.207.215
+
+node:
+  location: "UNKNOWN"  # Change to: HK / JP / LA / DE
+  debug: true

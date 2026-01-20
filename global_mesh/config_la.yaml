@@ -1,0 +1,15 @@
+# 洛杉矶节点配置 (Master + Subscriber/Bot)
+redis:
+  host: "127.0.0.1"  # 本地 Redis，因为 Master 就在这台机器
+  port: 6379
+  password: "YourSuperSecretGlobalPassword2026!"
+  db: 0
+  socket_timeout: 5
+
+channels:
+  alerts: "global_alerts"
+  heartbeat: "node_heartbeat"
+
+node:
+  location: "LA"
+  debug: true

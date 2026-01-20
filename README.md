@@ -134,12 +134,12 @@ Measured using `scripts/latency_test.py` on 2026-01-14. Lower is better.
 ```
 
 **Components:**
-| Node | IP | Role | Status |
-|------|-----|------|--------|
-| 🇺🇸 Los Angeles | 74.48.178.153 | Redis Master + Receiver | ✅ Live |
-| 🇩🇪 Leipzig | 104.28.239.220 | Monitor + Publisher | ✅ Live |
-| 🇯🇵 Osaka | 104.28.206.119 | Monitor + Publisher | ✅ Live |
-| 🇭🇰 Hong Kong | 205.198.66.34 | Monitor + Publisher | ✅ Live |
+| Node | Role | Status |
+|------|------|--------|
+| 🇺🇸 Los Angeles | Redis Master + Receiver | ✅ Live |
+| 🇩🇪 Leipzig | Monitor + Publisher | ✅ Live |
+| 🇯🇵 Osaka | Monitor + Publisher | ✅ Live |
+| 🇭🇰 Hong Kong | Monitor + Publisher | ✅ Live |
 
 **Capabilities:**
 - 🔍 **Real-time Monitoring:** Pump.fun & Raydium new token detection
